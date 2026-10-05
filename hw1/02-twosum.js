@@ -22,3 +22,49 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 
 **/
+
+const hashMapSetUp = function HashMapSetUp(numbers) {
+  let hashMap = new Map();
+
+  for (let i = 0; i < numbers.length; i += 1) {
+    hashMap.set(numbers[i], i); // the key will always contain the last index of that number in the array
+  }
+
+  return hashMap;
+};
+
+const twoSum = function TwoSum() {
+  const numbers = [1, 7, 6, 4, 3];
+  let target = 4;
+
+  const hashMap = hashMapSetUp(numbers);
+
+  const found = [];
+
+  if (numbers.length < 2) {
+    console.log("Array must contain at least 2 numbers");
+    return;
+  }
+
+  for (let i = 0; i < numbers.length; i += 1) {
+    let remainderNeeded = target - numbers[i];
+    let indexOfRemainder = hashMap.get(remainderNeeded);
+
+    // Remainder not present in array
+    if (indexOfRemainder !== undefined) {
+      // I want to make sure that the same index does not count twice
+      if (indexOfRemainder != i) {
+        found.push(i);
+        found.push(indexOfRemainder);
+
+        console.log(found);
+
+        return;
+      }
+    }
+  }
+
+  console.log("A sum was not found");
+};
+
+twoSum();

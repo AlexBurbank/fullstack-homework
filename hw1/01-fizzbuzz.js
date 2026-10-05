@@ -26,3 +26,24 @@ Input: n = 15
 Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
 
 **/
+
+const fizzbuzz = function FizzBuzz(n) {
+  let callout;
+  for (let i = 1; i <= n; i += 1) {
+    callout = "";
+    if (i % 3 !== 0 && i % 5 !== 0) {
+      callout = i;
+    }
+
+    if (i % 3 === 0) {
+      callout = "Fizz";
+    }
+
+    if (i % 5 === 0) {
+      callout = `${callout}Buzz`;
+    }
+    console.log(callout);
+  }
+};
+
+fb(16);
