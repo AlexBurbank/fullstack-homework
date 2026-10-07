@@ -50,10 +50,10 @@ const twoSum = function TwoSum() {
     let remainderNeeded = target - numbers[i];
     let indexOfRemainder = hashMap.get(remainderNeeded);
 
-    // Remainder not present in array
+    // If remainder present in array
     if (indexOfRemainder !== undefined) {
       // I want to make sure that the same index does not count twice
-      if (indexOfRemainder != i) {
+      if (indexOfRemainder !== i) {
         found.push(i);
         found.push(indexOfRemainder);
 

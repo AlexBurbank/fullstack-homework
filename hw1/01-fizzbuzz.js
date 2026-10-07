@@ -30,7 +30,7 @@ Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13"
 const fizzbuzz = function FizzBuzz(n) {
   let callout;
   for (let i = 1; i <= n; i += 1) {
-    callout = "";
+    callout = '';
     if (i % 3 !== 0 && i % 5 !== 0) {
       callout = i;
     }
@@ -46,4 +46,4 @@ const fizzbuzz = function FizzBuzz(n) {
   }
 };
 
-fb(16);
+fizzbuzz(16);
