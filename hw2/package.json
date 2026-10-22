@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "start-02": "nodemon 02-node-routing.js",
+    "start-03": "nodemon 03-express-routing.js",
+    "start-04": "nodemon 04-form.js",
+    "debug": "node --inspect 02-node-routing.js"
+  },
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "nodemon": "^3.1.14"
   }
 }
