@@ -121,7 +121,7 @@ console.log(calculateChange(150.11)); // TODO: Need to have some condition for t
 // $150.11 ==> Error: the number is too large
 
 // Add additional test cases here
-// error cases
+console.log("\n================Error cases================")
 console.log(calculateChange("some"));
 console.log(calculateChange("4.62"));
 console.log(calculateChange(4.627));
