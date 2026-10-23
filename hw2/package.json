@@ -1,12 +1,5 @@
 {
-  "scripts": {
-    "start-exercise01": "node 01-coins.js",
-    "start-exercise02": "node 02-node-routing.js",
-    "start-exercise03": "node 03-express-routing.js",
-    "start-exercise04": "node 04-form.js"
-  },
   "dependencies": {
-    "express": "^4.21.2",
-    "pug": "^3.0.4"
+    "express": "^4.21.2"
   }
 }
