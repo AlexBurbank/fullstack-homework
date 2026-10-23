@@ -28,6 +28,44 @@ app.get("/", (req, res) => {
 });
 
 // Add your code here
+app.get(`/${routes[0]}`, (req, res) => {
+  res.status(200);
+  res.set({ "Content-Type": "text/html" });
+  const message =
+    "<h1>Welcome page</h1><p>Welcome! Nothing to see here yet</p>";
+  res.send(message);
+});
+
+app.get(`/${routes[1]}`, (req, res) => {
+  res.status(302);
+  res.redirect(`/${routes[2]}`);
+  res.set({ "Content-Type": "text/html" });
+});
+
+app.get(`/${routes[2]}`, (req, res) => {
+  res.status(200);
+  res.set({ "Content-Type": "text/html" });
+  res.send("<h1>You were redirected to this page</h1>");
+});
+
+app.get(`/${routes[3]}`, (req, res) => {
+  res.status(200);
+  res.setHeader("Cache-Control", "max-age=200");
+  res.send("<h1>this resource was cached</h1>");
+});
+
+app.get(`/${routes[4]}`, (req, res) => {
+  res.status(200);
+  res.set({ "Content-Type": "text/html", "set-cookie": "hello=world" });
+  res.send("Cookies... yummm");
+});
+
+app.get("/*", (req, res) => {
+  // for other routes
+  res.status(404);
+  res.set({ "Content-Type": "text/html" });
+  res.send("<h1>404 - page not found</h1>");
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
