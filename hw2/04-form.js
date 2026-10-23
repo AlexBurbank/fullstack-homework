@@ -37,7 +37,7 @@ app.post("/submit", (req, res) => {
     email: req.body.email ? req.body.email : "No response",
     comments: req.body.comments ? req.body.comments : "",
     newsletterSignup: req.body.newsletterSignup
-      ? req.body.newsletterSignup
+      ? "Checked"
       : "Not checked",
   });
   res.end();
