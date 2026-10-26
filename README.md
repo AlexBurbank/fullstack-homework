@@ -17,3 +17,5 @@ For  instructions on how to set up the homework repository, start with the instr
 ### Checking for Updates
 
 This repository will be updated throughout the course. Always check to see if there are updates before starting any homework assingment. If there are updates, make sure to pull them. To do so, run `git pull <remote> <branch>`.
+
+## To start each exercise in HW 2, you need to use the corresponding start script. Ex: to start exercise 1: the start script needed to run is "start-exercise01" in package.json
