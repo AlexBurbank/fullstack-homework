@@ -50,7 +50,7 @@ app.get(`/${routes[2]}`, (req, res) => {
 
 app.get(`/${routes[3]}`, (req, res) => {
   res.status(200);
-  res.setHeader("Cache-Control", "max-age=200");
+  res.setHeader("Cache-Control", "max-age=86400");
   res.send("<h1>this resource was cached</h1>");
 });
 
@@ -60,7 +60,7 @@ app.get(`/${routes[4]}`, (req, res) => {
   res.send("Cookies... yummm");
 });
 
-app.get("/*", (req, res) => {
+app.use("", (req, res) => {
   // for other routes
   res.status(404);
   res.set({ "Content-Type": "text/html" });

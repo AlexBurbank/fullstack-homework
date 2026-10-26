@@ -72,6 +72,10 @@ const calculateChange = function CalculateChange(amount) {
     return `${amount} ==> Error: amount passed in is not a number`; // numericalAmount is NaN so that would not help anybody
   }
 
+  if (numericalAmount < 0) {
+    return `$${numericalAmount} ==> Error: the number cannot be negative`;
+  }
+
   if (numericalAmount > 100) {
     return `$${numericalAmount} ==> Error: the number is too large`;
   }
@@ -122,6 +126,7 @@ console.log(calculateChange(150.11)); // TODO: Need to have some condition for t
 
 // Add additional test cases here
 console.log("\n================Error cases================");
+console.log(calculateChange(-1));
 console.log(calculateChange("some"));
 console.log(calculateChange("4.62"));
 console.log(calculateChange(4.627));

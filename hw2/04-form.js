@@ -11,6 +11,9 @@ app.use(
 
 app.use(express.static("public"));
 
+app.set("views", __dirname + "/views");
+app.set("view engine", "pug");
+
 // http://localhost:5001/form should return a form with input elements for username, email, comments, newsletter sign up, and submit button.
 
 // http://localhost:5001/submit should return all the data the user entered
@@ -28,17 +31,13 @@ app.get("/form", (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
-  app.set("views", __dirname + "/views");
-  app.set("view engine", "pug");
   res.status(200);
   res.set({ "Content-Type": "text/html" });
   res.render("formResults", {
     username: req.body.username ? req.body.username : "No response",
     email: req.body.email ? req.body.email : "No response",
     comments: req.body.comments ? req.body.comments : "",
-    newsletterSignup: req.body.newsletterSignup
-      ? "Checked"
-      : "Not checked",
+    newsletterSignup: req.body.newsletterSignup ? "Checked" : "Not checked",
   });
   res.end();
 });
