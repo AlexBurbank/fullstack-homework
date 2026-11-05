@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "start-exercise1": "node ./typescript/exercise1.ts",
+    "start-exercise2": "node ./typescript/exercise2.ts",
+    "start-exercise3": "node ./typescript/exercise3.ts",
+    "start-exercise4": "node ./typescript/exercise4.ts",
+    "start-exercise5": "node ./typescript/exercise5.ts",
+    "start-exercise6": "node ./typescript/exercise6.ts",
+    "start-exercise7": "node ./typescript/exercise7.ts",
+    "start-exercise8": "node ./typescript/exercise8.ts",
+    "start-tutorial2": "node ./SocketsIo/index.js",
+    "start-part3Exercise": "node ./exercises/fetchRickMortyAPI.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "react": "^19.3.1",
+    "socket.io": "^4.8.4",
+    "axios": "^1.21.0",
+    "node-fetch": "3.3.2",
+    "pug": "^3.0.4"
+  }
+}
