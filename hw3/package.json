@@ -9,14 +9,12 @@
     "start-exercise7": "node ./typescript/exercise7.ts",
     "start-exercise8": "node ./typescript/exercise8.ts",
     "start-tutorial2": "node ./SocketsIo/index.js",
-    "start-part3Exercise": "node ./exercises/fetchRickMortyAPI.js"
+    "start-part3Exercise": "node ./fetchRickMortyAPI.js"
   },
   "dependencies": {
     "express": "^5.3.0",
     "react": "^19.3.1",
     "socket.io": "^4.8.4",
-    "axios": "^1.21.0",
-    "node-fetch": "3.3.2",
     "pug": "^3.0.4"
   }
 }

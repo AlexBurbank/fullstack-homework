@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(
+      content="width=device-width, initial-scale=1.0" 
+      name="viewport"
+      )
+    link(
+      href="species.css" 
+      rel="stylesheet"
+      )
+  body
+    h1 Species route (Displaying the first 100 characters categorized by species)
+    each speciesBucket, bucketIndex in data
+      p(class="categoryName")=categories[bucketIndex]
+      div(class="category")
+        each name, entryIndex in speciesBucket
+          p(class="name")=name
