@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(
+      content="width=device-width, initial-scale=1.0" 
+      name="viewport"
+      )
+    link(
+      href="characters.css" 
+      rel="stylesheet"
+      )
+  body
+    h1 Characters route (Displaying the first 100 characters)
+    div(id="main-div")
+      each entry in data
+        div(class="character")
+          p(class="name")=entry.name
+          p=entry.species
+          p=entry.status
+          div(class="img-container")
+            img(src=entry.image alt="character's picture")

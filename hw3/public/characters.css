@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#main-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 50%;
+  height: auto;
+}
+
+p {
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
