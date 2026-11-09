@@ -12,8 +12,11 @@ html(lang="en")
       )
   body
     h1 Species route (Displaying the first 100 characters categorized by species)
-    each speciesBucket, bucketIndex in data
-      p(class="categoryName")=categories[bucketIndex]
+    each speciesBucket, i in data
+      if data[i].length === 1
+        p(class="categoryName") There is #{data[i].length} character in the #{categories[i]} species
+      else
+        p(class="categoryName") There are #{data[i].length} characters in #{categories[i]} species
       div(class="category")
-        each name, entryIndex in speciesBucket
+        each name in speciesBucket
           p(class="name")=name

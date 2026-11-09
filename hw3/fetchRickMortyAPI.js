@@ -42,6 +42,15 @@ const fetchLocationInfo = async function FetchLocationInfo() {
     .catch((err) => console.log(err));
 };
 
+const fetchLocationData = async function FetchLocationData(numPage) {
+  return fetch(`https://rickandmortyapi.com/api/location?page=${numPage}`)
+    .then((res) => res.json())
+    .then((data) => {
+      return data.results;
+    })
+    .catch((err) => console.log(numPage + ": " + err));
+};
+
 const fetchInfo = async function FetchInfo() {
   return fetch(`https://rickandmortyapi.com/api/character?page=1`) // Just need info from one of the pages
     .then((res) => res.json())
@@ -66,15 +75,18 @@ app.get("/home", (req, res) => {
 app.get("/characters", async (req, res) => {
   let numPage = 1;
   let numPagesToGet = 5; // Brings only 100 characters. The API becomes overloaded otherwise and returns a 429 status code which means I would have to set a timeout before fetching more
-  do {
-    if (numPage === 1) {
-      const entryInfoChunk = await fetchInfo();
-      totalPages = entryInfoChunk.pages;
-    }
-    const entryResultChunk = await fetchData(numPage);
-    data.push(...entryResultChunk);
-    numPage = numPage + 1;
-  } while (numPage <= numPagesToGet);
+  if (data.length === 0) {
+    // Acts like a "cache" by not adding the same entries into data
+    do {
+      if (numPage === 1) {
+        const entryInfoChunk = await fetchInfo();
+        totalPages = entryInfoChunk.pages;
+      }
+      const entryResultChunk = await fetchData(numPage);
+      data.push(...entryResultChunk);
+      numPage = numPage + 1;
+    } while (numPage <= numPagesToGet);
+  }
 
   res.set({ "Content-Type": "text/html" });
   res.status(200);
@@ -118,12 +130,45 @@ app.get("/species", (req, res) => {
 });
 
 app.get("/locations", async (req, res) => {
-  const locationInfo = await fetchLocationInfo();
+  const locations = [];
+  const numLocationsByType = [];
+  const uniqueLocationTypes = new Set();
+  const locationTypeLookupTable = new Map();
+  const entryInfoChunk = await fetchLocationInfo();
+  let numPage = 1;
+  let numPagesToGet = 7; // Bringing all location pages is OK because there are only 7
+  do {
+    const entryResultChunk = await fetchLocationData(numPage);
+    locations.push(...entryResultChunk);
+    numPage = numPage + 1;
+  } while (numPage <= numPagesToGet);
+
+  locations.forEach((location) => uniqueLocationTypes.add(location.type));
+  const locationTypesIterator = uniqueLocationTypes.keys(); // keys and values the same here
+
+  const types = [];
+
+  for (let i = 0; i < uniqueLocationTypes.size; i++) {
+    // Sets up the location lookup table map based on the already created location set
+    let locationType = locationTypesIterator.next().value;
+    if (locationType === "") locationType = "''"; // I want to present something for the type
+    types.push(locationType); // For the pug template, I need to use an array, not a set
+    locationTypeLookupTable.set(locationType, i);
+    numLocationsByType.push(0); // Initializing to 0 to increment later
+  }
+
+  for (let i = 0; i < locations.length; i++) {
+    const location = locations[i];
+    const indexToInsertInto = locationTypeLookupTable.get(location.type);
+    numLocationsByType[indexToInsertInto] =
+      numLocationsByType[indexToInsertInto] + 1;
+  }
 
   res.set({ "Content-Type": "text/html" });
   res.status(200);
-  res.render("location", {
-    numLocations: locationInfo.count,
+  res.render("locations", {
+    types: types,
+    numLocationsByType: numLocationsByType,
   });
 });
 

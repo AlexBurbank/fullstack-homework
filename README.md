@@ -17,3 +17,6 @@ For  instructions on how to set up the homework repository, start with the instr
 ### Checking for Updates
 
 This repository will be updated throughout the course. Always check to see if there are updates before starting any homework assingment. If there are updates, make sure to pull them. To do so, run `git pull <remote> <branch>`.
+
+### Note on HW3: You need to run the /characters route before the /species route to initialize the data
+### To run HW3, you need to run the various scripts from package.json

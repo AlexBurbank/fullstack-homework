@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(
+      content="width=device-width, initial-scale=1.0" 
+      name="viewport"
+      )
+    link(
+      href="locations.css"
+      rel="stylesheet"
+      )
+  body
+    h1 Location route (number of locations by type)
+    div(class="grid")
+      each type, i in numLocationsByType
+        div(class="typeCountEntry")
+          p(class="typeName")=types[i]
+          p : #{type}
